@@ -9,7 +9,7 @@
 ; Creado: 9 feb, 2021
 ; Ultima modificacion: 1 feb, 2021
 
-PROCESSOR 16F887   
+PROCESSOR 16F887  ;Definición del procesador a utilizar 
 #include <xc.inc>
 
 ;CONFIG1
@@ -28,21 +28,18 @@ PROCESSOR 16F887
  CONFIG  BOR4V = BOR40V        ; Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
  CONFIG  WRT = OFF             ; Flash Program Memory Self Write Enable bits (Write protection off)
   
-
- PSECT udata_bank0
-   cont_1: DS 1
-   cont_2: DS 1
+;--------Definicion del Vector Reset----------
     
- PSECT resVect, class=CODE, abs, delta=2
+ PSECT resVect, class=CODE, abs, delta=2    ;Caracteristicas del vector reset
 
 ;---------------vector reset------------------
-ORG 00h
+ORG 00h			    ;Posicion del vector reset
 resetVec: 
     PAGESEL main
     goto main
     
-PSECT code, delta=2, abs
-ORG 100h ;posicion para el codigo
+PSECT code, delta=2, abs    ;Caracteristicas del codigo
+ORG 100h		    ;posicion para el codigo
  
 ;---------------configuracion-----------------
 main: 
@@ -51,84 +48,75 @@ main:
    clrf	   ANSELH
    
    banksel TRISA    ;Nos movemos al banco 1
-   movlw   0F0h
-   movwf   TRISA
+   movlw   0F0h	    ;Le indicamos que los ultimos 4 puertos de A
+   movwf   TRISA    ;son entradas y el resto salidas
    
-   movlw   01Fh
-   movwf   TRISB 
+   movlw   01Fh	    ;Le indicamos a los primeros 5 puertos de B
+   movwf   TRISB    ;que son entradas y el resto salidas
    
-   movlw   0F0h
-   movwf   TRISC
+   movlw   0F0h	    ;Le indicamos a los primeros 4 puertos de C que
+   movwf   TRISC    ;son salidas y el resto entradas
    
-   movlw   0E0h
-   movwf   TRISD
+   movlw   0E0h	    ;Le indicamos a los primeros 5 puertos de D que
+   movwf   TRISD    ;son salidas y el resto entradas
    
-   banksel PORTA
-   clrf	   PORTA
-   clrf	   PORTB
+   banksel PORTA    ;Nos movemos al banco 0
+   clrf	   PORTA    ;Se limpian los puertos A, B, C y D para que comienzen 
+   clrf	   PORTB    ;en 0
    clrf	   PORTC
    clrf	   PORTD
    
 ;---------------loop principal---------------
    
  loop:
-    btfsc   PORTB, 0
-    call    inc_cont1
-    btfsc   PORTB, 1
-    call    dec_cont1
+    btfsc   PORTB, 0	;Prueba del bit RB0
+    call    inc_cont1	;Si se presiona el boton en RB0 se llama la Subrutina 
+    btfsc   PORTB, 1	;Prueba del bit RB1	
+    call    dec_cont1	;Si se presiona el boton en RB1 se llama la Subrutina
     
-    btfsc   PORTB, 2
-    call    inc_cont2
-    btfsc   PORTB, 3
-    call    dec_cont2
+    btfsc   PORTB, 2	;Prueba del bit RB2
+    call    inc_cont2	;Si se presiona el boton en RB2 se llama la Subrutina
+    btfsc   PORTB, 3	;Prueba del bit RB3
+    call    dec_cont2	;Si se presiona el boton en RB3 se llama la Subrutina
     
-    btfsc   PORTB, 4
-    call    sum
+    btfsc   PORTB, 4	;Prueba del bit RB4
+    call    sum		;Si se presiona el boton en RB4 se llama la Subrutina
     
-    goto    loop
+    goto    loop	;Goto para mantener el programa activo todo el tiempo
  
 ;---------------sub rutinas------------------
- inc_cont1:
-    btfsc   PORTB, 0
-    goto    $-1
-    incf    PORTA, 1
-    return
+ inc_cont1:		;Subrutina de incrementar el contador 1
+    btfsc   PORTB, 0	;Antirebote, en donde si se mantiene ppresionado el 
+    goto    $-1		;boton se mantiene en un loop
+    incf    PORTA, 1	;Cuando se deja de presionar el boton el puerto A se incrementa en 1
+    return		;Regreso al loop principal
     
- dec_cont1:
-    btfsc   PORTB, 1
+ dec_cont1:		;Subrutina de decrementar el contador 1
+    btfsc   PORTB, 1	;Antirebote (revisar el comentario en linea 89-90)
     goto    $-1
-    decf    PORTA, 1
-    return
+    decf    PORTA, 1	;Cuando se deja de presionar el boton el puerto A se decrementa en 1
+    return		;Regreso al loop principal
       
- inc_cont2:
-    btfsc   PORTB, 2
+ inc_cont2:		;Subrutina de incrementar el contador 2
+    btfsc   PORTB, 2	;Antirebote (revisar el comentario en linea 89-90)
     goto    $-1
-    incf    PORTC, 1
-    return
+    incf    PORTC, 1	;Cuando se deja de presionar el boton el puerto C se incrementa en 1
+    return		;Regreso al loop principal
     
- dec_cont2:
-    btfsc   PORTB, 3
+ dec_cont2:		;Subrutina de decrementar el contador 2
+    btfsc   PORTB, 3	;Antirebote (revisar el comentario en linea 89-90)
     goto    $-1
-    decfsz    PORTC, 1
-    return
+    decf    PORTC, 1	;Cuando se deja de presionar el boton el puerto C se decrementa en 1
+    return		;Regreso al loop principal
     
  sum:
-    btfsc   PORTB, 4
+    btfsc   PORTB, 4	;Antirebote (revisar el comentario en linea 89-90)
     goto    $-1   
     
-    movf    PORTA, 0
-    addwf   PORTC, 0
-    movwf   PORTD
-    return
+    movf    PORTA, 0	;Se mueve el dato de PORTA a W
+    addwf   PORTC, 0	;Se suma el dato en W con el dato en PORTC y se guarda en W
+    movwf   PORTD	;Se mueve el resultado de W al PORTD
+    return		;Regreso al loop principal
+
     
-    ;movf    PORTA, 0
-    ;movwf   cont_1
-    
-    ;movf    PORTC, 0
-    ;movwf   cont_2
-    
-    ;addwf   cont_1, 1
-    ;movf    cont_1, 0
-    ;movwf   PORTD
-    
-end  
+end			;FIN
