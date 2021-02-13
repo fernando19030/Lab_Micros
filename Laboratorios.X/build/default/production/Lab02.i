@@ -10,7 +10,7 @@
 ; Hardware: LEDs en el puerto A, C y D
 ;
 ; Creado: 9 feb, 2021
-; Ultima modificacion: 1 feb, 2021
+; Ultima modificacion: 13 feb, 2021
 
 PROCESSOR 16F887 ;Definición del procesador a utilizar
 
