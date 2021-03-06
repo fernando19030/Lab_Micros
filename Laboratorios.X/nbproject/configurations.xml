@@ -16,6 +16,7 @@
       <itemPath>Lab02.s</itemPath>
       <itemPath>Lab03.s</itemPath>
       <itemPath>Lab04.s</itemPath>
+      <itemPath>Lab05.s</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -75,6 +76,14 @@
         </pic-as-linker>
       </item>
       <item path="Lab03.s" ex="true" overriding="false">
+        <pic-as-assembler>
+        </pic-as-assembler>
+        <pic-as-global>
+        </pic-as-global>
+        <pic-as-linker>
+        </pic-as-linker>
+      </item>
+      <item path="Lab04.s" ex="true" overriding="false">
       </item>
       <Simulator>
         <property key="codecoverage.enabled" value="Disable"/>
