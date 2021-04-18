@@ -7,7 +7,7 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "Lab07.c" 2
-# 13 "Lab07.c"
+# 18 "Lab07.c"
 #pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = ON
@@ -2507,7 +2507,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 31 "Lab07.c" 2
+# 36 "Lab07.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2642,9 +2642,10 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 32 "Lab07.c" 2
-# 45 "Lab07.c"
+# 37 "Lab07.c" 2
+# 50 "Lab07.c"
 char tabla [10] = {0X3F, 0X06, 0X5B, 0X4F, 0X66, 0X6D, 0X7D, 0X07, 0X7F, 0X67};
+
 
 int flags;
 int unidad;
@@ -2659,8 +2660,12 @@ int residuo;
 void setup(void);
 int decimal(void);
 
+
+
+
 void __attribute__((picinterrupt(("")))) isr(void)
 {
+
     if (T0IF == 1)
     {
         PORTBbits.RB2 = 0;
@@ -2692,6 +2697,7 @@ void __attribute__((picinterrupt(("")))) isr(void)
         }
     }
 
+
     if (RBIF == 1){
         if (RB0 == 1){
             PORTC++;
@@ -2721,7 +2727,6 @@ void main(void) {
     {
         variable = PORTC;
         decimal();
-# 149 "Lab07.c"
     }
 
     return;
@@ -2773,6 +2778,9 @@ void setup(void) {
     flags = 0X00;
 
 }
+
+
+
 
 int decimal(void) {
     centena = variable/100;

@@ -15,13 +15,13 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"60 C:\Users\Earst\MPLABXProjects\Lab_Micros\Lab_en_C.X\Lab07.c
+"69 C:\Users\Earst\MPLABXProjects\Lab_Micros\Lab_en_C.X\Lab07.c
 [v _isr isr `II(v  1 e 1 0 ]
-"111
+"122
 [v _main main `(v  1 e 1 0 ]
-"158
+"142
 [v _setup setup `(v  1 e 1 0 ]
-"201
+"188
 [v _decimal decimal `(i  1 e 2 0 ]
 "59 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -120,34 +120,34 @@
 [v _RBIF RBIF `VEb  1 e 0 @88 ]
 "4322
 [v _T0IF T0IF `VEb  1 e 0 @90 ]
-"45 C:\Users\Earst\MPLABXProjects\Lab_Micros\Lab_en_C.X\Lab07.c
+"50 C:\Users\Earst\MPLABXProjects\Lab_Micros\Lab_en_C.X\Lab07.c
 [v _tabla tabla `[10]uc  1 e 10 0 ]
-"47
+"53
 [v _flags flags `i  1 e 2 0 ]
-"48
+"54
 [v _unidad unidad `i  1 e 2 0 ]
-"49
+"55
 [v _decena decena `i  1 e 2 0 ]
-"50
+"56
 [v _centena centena `i  1 e 2 0 ]
-"51
+"57
 [v _variable variable `i  1 e 2 0 ]
-"52
+"58
 [v _residuo residuo `i  1 e 2 0 ]
-"111
+"122
 [v _main main `(v  1 e 1 0 ]
 {
-"152
+"136
 } 0
-"158
+"142
 [v _setup setup `(v  1 e 1 0 ]
 {
-"199
+"183
 } 0
-"201
+"188
 [v _decimal decimal `(i  1 e 2 0 ]
 {
-"206
+"193
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
@@ -173,8 +173,8 @@
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "41
 } 0
-"60 C:\Users\Earst\MPLABXProjects\Lab_Micros\Lab_en_C.X\Lab07.c
+"69 C:\Users\Earst\MPLABXProjects\Lab_Micros\Lab_en_C.X\Lab07.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"105
+"116
 } 0
