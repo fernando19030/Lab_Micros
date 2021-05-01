@@ -1,4 +1,4 @@
-# 1 "Lab08.c"
+# 1 "Lab09.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Lab08.c" 2
-# 18 "Lab08.c"
+# 1 "Lab09.c" 2
+# 18 "Lab09.c"
 #pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = ON
@@ -2507,205 +2507,27 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 36 "Lab08.c" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int8_t;
-
-
-
-
-
-
-typedef signed int int16_t;
-
-
-
-
-
-
-
-typedef __int24 int24_t;
-
-
-
-
-
-
-
-typedef signed long int int32_t;
-# 52 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint8_t;
-
-
-
-
-
-typedef unsigned int uint16_t;
-
-
-
-
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-
-
-typedef unsigned long int uint32_t;
-# 88 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_least8_t;
-
-
-
-
-
-
-
-typedef signed int int_least16_t;
-# 109 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_least24_t;
-# 118 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed long int int_least32_t;
-# 136 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_least8_t;
-
-
-
-
-
-
-typedef unsigned int uint_least16_t;
-# 154 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_least24_t;
-
-
-
-
-
-
-
-typedef unsigned long int uint_least32_t;
-# 181 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_fast8_t;
-
-
-
-
-
-
-typedef signed int int_fast16_t;
-# 200 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_fast24_t;
-
-
-
-
-
-
-
-typedef signed long int int_fast32_t;
-# 224 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_fast8_t;
-
-
-
-
-
-typedef unsigned int uint_fast16_t;
-# 240 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_fast24_t;
-
-
-
-
-
-
-typedef unsigned long int uint_fast32_t;
-# 268 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef int32_t intmax_t;
-# 282 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
-typedef uint32_t uintmax_t;
-
-
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-# 37 "Lab08.c" 2
-# 50 "Lab08.c"
-char tabla [10] = {0X3F, 0X06, 0X5B, 0X4F, 0X66, 0X6D, 0X7D, 0X07, 0X7F, 0X67};
-
-
-int flags;
-int unidad;
-int decena;
-int centena;
-int variable;
-int residuo;
-
-
-
-
+# 36 "Lab09.c" 2
+# 52 "Lab09.c"
 void setup(void);
-int decimal(void);
 
 
 
 
 void __attribute__((picinterrupt(("")))) isr(void)
 {
-
-    if (T0IF == 1)
-    {
-        PORTBbits.RB2 = 0;
-        PORTBbits.RB3 = 0;
-        PORTBbits.RB4 = 0;
-
-        INTCONbits.T0IF = 0;
-        TMR0 = 217;
-
-        if (flags == 0) {
-           PORTBbits.RB2 = 0;
-           PORTBbits.RB0 = 1;
-           PORTD = tabla[centena];
-           flags = 1;
-        }
-
-        else if (flags == 1) {
-           PORTBbits.RB0 = 0;
-           PORTBbits.RB1 = 1;
-           PORTD = tabla[decena];
-           flags = 2;
-        }
-
-        else if (flags == 2) {
-           PORTBbits.RB1 = 0;
-           PORTBbits.RB2 = 1;
-           PORTD = tabla[unidad];
-           flags = 0;
-        }
-    }
-
-    if (PIR1bits.ADIF) {
+    if (PIR1bits.ADIF == 1) {
         if (ADCON0bits.CHS == 0) {
-            PORTC = ADRESH;
+            CCPR1L = (ADRESH>>1) + 125;
+            CCP1CONbits.DC1B1 = ADRESH & 0b01;
+            CCP1CONbits.DC1B0 = (ADRESH >> 7);
         }
 
         else {
-            variable = ADRESH;
+            CCPR2L = (ADRESH>>1) + 125;
+            CCP2CONbits.DC2B1 = ADRESH & 0b01;
+            CCP2CONbits.DC2B0 = (ADRESH >> 7);
         }
-
         PIR1bits.ADIF = 0;
     }
 
@@ -2726,8 +2548,6 @@ void main(void) {
 
     while (1)
     {
-        decimal();
-
         if (ADCON0bits.GO == 0){
             if (ADCON0bits.CHS == 0) {
                 ADCON0bits.CHS = 1;
@@ -2754,15 +2574,8 @@ void setup(void) {
     ANSELH = 0X00;
 
     TRISA = 0X03;
-    TRISB = 0X00;
-    TRISC = 0X00;
-    TRISD = 0X00;
 
-    PORTA = 0X00;
-    PORTB = 0X00;
-    PORTC = 0X00;
-    PORTD = 0X00;
-
+    PORTA = 0x00;
 
     OSCCONbits.IRCF2 = 1;
     OSCCONbits.IRCF1 = 1;
@@ -2772,42 +2585,45 @@ void setup(void) {
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-    INTCONbits.T0IE = 1;
     PIE1bits.ADIE = 1;
 
     PIR1bits.ADIF = 0;
-    INTCONbits.T0IF = 0;
-
-
-    OPTION_REGbits.PSA = 0;
-    OPTION_REGbits.T0CS = 0;
-    OPTION_REGbits.PS2 = 1;
-    OPTION_REGbits.PS1 = 1;
-    OPTION_REGbits.PS0 = 1;
-    TMR0 = 217;
 
 
     ADCON1bits.ADFM = 0;
     ADCON1bits.VCFG0 = 0;
     ADCON1bits.VCFG1 = 0;
 
-    ADCON0bits.ADCS1 = 1;
+    ADCON0bits.ADCS = 0b10;
     ADCON0bits.CHS = 0;
     _delay((unsigned long)((200)*(8000000/4000000.0)));
     ADCON0bits.ADON = 1;
     _delay((unsigned long)((200)*(8000000/4000000.0)));
 
 
-    flags = 0X00;
+    TRISCbits.TRISC2 = 1;
+    TRISCbits.TRISC1 = 1;
+    PR2 = 250;
+    CCP1CONbits.P1M = 0;
+    CCP1CONbits.CCP1M = 0b1100;
+    CCP2CONbits.CCP2M = 0b1100;
 
-}
+    CCPR1L = 0x0f;
+    CCPR2L = 0x0f;
+    CCP1CONbits.DC1B = 0;
+    CCP2CONbits.DC2B0 = 0;
+    CCP2CONbits.DC2B1 = 0;
 
 
+    PIR1bits.TMR2IF = 0;
+    T2CONbits.T2CKPS = 0b11;
+    T2CONbits.TMR2ON = 1;
 
+    while (PIR1bits.TMR2IF == 0);
+    PIR1bits.TMR2IF = 0;
 
-int decimal(void) {
-    centena = variable/100;
-    residuo = variable%100;
-    decena = residuo/10;
-    unidad = residuo%10;
+    TRISCbits.TRISC2 = 0;
+    TRISCbits.TRISC1 = 0;
+
+    return;
 }
