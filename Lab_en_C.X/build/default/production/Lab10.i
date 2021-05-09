@@ -1,4 +1,4 @@
-# 1 "Lab09.c"
+# 1 "Lab10.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Lab09.c" 2
-# 18 "Lab09.c"
+# 1 "Lab10.c" 2
+# 18 "Lab10.c"
 #pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = ON
@@ -2507,31 +2507,245 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 36 "Lab09.c" 2
-# 52 "Lab09.c"
-void setup(void);
+# 36 "Lab10.c" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
+# 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int8_t;
 
 
 
 
-void __attribute__((picinterrupt(("")))) isr(void)
+
+
+typedef signed int int16_t;
+
+
+
+
+
+
+
+typedef __int24 int24_t;
+
+
+
+
+
+
+
+typedef signed long int int32_t;
+# 52 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint8_t;
+
+
+
+
+
+typedef unsigned int uint16_t;
+
+
+
+
+
+
+typedef __uint24 uint24_t;
+
+
+
+
+
+
+typedef unsigned long int uint32_t;
+# 88 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_least8_t;
+
+
+
+
+
+
+
+typedef signed int int_least16_t;
+# 109 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_least24_t;
+# 118 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed long int int_least32_t;
+# 136 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_least8_t;
+
+
+
+
+
+
+typedef unsigned int uint_least16_t;
+# 154 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_least24_t;
+
+
+
+
+
+
+
+typedef unsigned long int uint_least32_t;
+# 181 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_fast8_t;
+
+
+
+
+
+
+typedef signed int int_fast16_t;
+# 200 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_fast24_t;
+
+
+
+
+
+
+
+typedef signed long int int_fast32_t;
+# 224 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_fast8_t;
+
+
+
+
+
+typedef unsigned int uint_fast16_t;
+# 240 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_fast24_t;
+
+
+
+
+
+
+typedef unsigned long int uint_fast32_t;
+# 268 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef int32_t intmax_t;
+# 282 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef uint32_t uintmax_t;
+
+
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+# 37 "Lab10.c" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 1 3
+
+
+
+# 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__size_t.h" 1 3
+
+
+
+typedef unsigned size_t;
+# 4 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+
+# 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__null.h" 1 3
+# 5 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdarg.h" 1 3
+
+
+
+
+
+
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+# 11 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+# 43 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+struct __prbuf
 {
-    if (PIR1bits.ADIF == 1) {
-        if (ADCON0bits.CHS == 0) {
-            CCPR1L = (ADRESH>>1) + 125;
-            CCP1CONbits.DC1B1 = ADRESH & 0b01;
-            CCP1CONbits.DC1B0 = (ADRESH >> 7);
-        }
+ char * ptr;
+ void (* func)(char);
+};
+# 85 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\conio.h" 1 3
 
-        else {
-            CCPR2L = (ADRESH>>1) + 125;
-            CCP2CONbits.DC2B1 = ADRESH & 0b01;
-            CCP2CONbits.DC2B0 = (ADRESH >> 7);
-        }
-        PIR1bits.ADIF = 0;
-    }
 
-}
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\errno.h" 1 3
+# 29 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\errno.h" 3
+extern int errno;
+# 8 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\conio.h" 2 3
+
+
+
+
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+
+
+extern char * cgets(char *);
+extern void cputs(const char *);
+# 85 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+# 180 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+# 38 "Lab10.c" 2
+# 52 "Lab10.c"
+void setup(void);
+void putch(char data);
+void display (void);
 
 
 
@@ -2539,8 +2753,6 @@ void __attribute__((picinterrupt(("")))) isr(void)
 
 void main(void) {
     setup();
-    ADCON0bits.GO = 1;
-
 
 
 
@@ -2548,20 +2760,12 @@ void main(void) {
 
     while (1)
     {
-        if (ADCON0bits.GO == 0){
-            if (ADCON0bits.CHS == 0) {
-                ADCON0bits.CHS = 1;
-            }
-            else {
-                ADCON0bits.CHS = 0;
-            }
+        display();
 
-            _delay((unsigned long)((200)*(8000000/4000000.0)));
-            ADCON0bits.GO = 1;
-        }
     }
 
     return;
+
 }
 
 
@@ -2570,12 +2774,14 @@ void main(void) {
 
 void setup(void) {
 
-    ANSEL = 0X03;
+    ANSEL = 0X00;
     ANSELH = 0X00;
 
-    TRISA = 0X03;
+    TRISA = 0X00;
+    TRISB = 0X00;
 
     PORTA = 0x00;
+    PORTB = 0x00;
 
     OSCCONbits.IRCF2 = 1;
     OSCCONbits.IRCF1 = 1;
@@ -2585,45 +2791,76 @@ void setup(void) {
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-    PIE1bits.ADIE = 1;
-
-    PIR1bits.ADIF = 0;
-
-
-    ADCON1bits.ADFM = 0;
-    ADCON1bits.VCFG0 = 0;
-    ADCON1bits.VCFG1 = 0;
-
-    ADCON0bits.ADCS = 0b10;
-    ADCON0bits.CHS = 0;
-    _delay((unsigned long)((200)*(8000000/4000000.0)));
-    ADCON0bits.ADON = 1;
-    _delay((unsigned long)((200)*(8000000/4000000.0)));
+    PIE1bits.RCIE = 1;
+    PIE1bits.TXIE = 1;
+    PIR1bits.RCIF = 0;
+    PIR1bits.TXIF = 0;
 
 
-    TRISCbits.TRISC2 = 1;
-    TRISCbits.TRISC1 = 1;
-    PR2 = 250;
-    CCP1CONbits.P1M = 0;
-    CCP1CONbits.CCP1M = 0b1100;
-    CCP2CONbits.CCP2M = 0b1100;
+    TXSTAbits.SYNC = 0;
+    TXSTAbits.BRGH = 1;
 
-    CCPR1L = 0x0f;
-    CCPR2L = 0x0f;
-    CCP1CONbits.DC1B = 0;
-    CCP2CONbits.DC2B0 = 0;
-    CCP2CONbits.DC2B1 = 0;
+    BAUDCTLbits.BRG16 = 1;
+
+    SPBRG = 207;
+    SPBRGH = 0;
+
+    RCSTAbits.SPEN = 1;
+    RCSTAbits.RX9 = 0;
+    RCSTAbits.CREN = 1;
+
+    TXSTAbits.TXEN = 1;
+
+    return;
+}
 
 
-    PIR1bits.TMR2IF = 0;
-    T2CONbits.T2CKPS = 0b11;
-    T2CONbits.TMR2ON = 1;
 
-    while (PIR1bits.TMR2IF == 0);
-    PIR1bits.TMR2IF = 0;
 
-    TRISCbits.TRISC2 = 0;
-    TRISCbits.TRISC1 = 0;
 
+void putch(char data){
+    while (TXIF == 0);
+    TXREG = data;
+    return;
+}
+
+void display(void) {
+    _delay((unsigned long)((100)*(8000000/4000.0)));
+    printf("\rQue accion desea ejecutar?: \r");
+    _delay((unsigned long)((100)*(8000000/4000.0)));
+    printf("    (1) Desplegar cadena de caracteres \r");
+    _delay((unsigned long)((100)*(8000000/4000.0)));
+    printf("    (2) Cambiar PORTA \r");
+    _delay((unsigned long)((100)*(8000000/4000.0)));
+    printf("    (3) Cambiar PORTB \r");
+
+    while (PIR1bits.RCIF == 0);
+
+    if (RCREG == '1') {
+        _delay((unsigned long)((500)*(8000000/4000.0)));
+        printf("\r\rLa cadena de caracteres es:");
+        _delay((unsigned long)((500)*(8000000/4000.0)));
+        printf(" HoLa JoSe y KuRt\r\r");
+    }
+
+    else if (RCREG == '2') {
+        _delay((unsigned long)((500)*(8000000/4000.0)));
+        printf("\r\rPresione el caracter a colocar en PORTA\r\r");
+        while (RCIF == 0);
+
+        PORTA = RCREG;
+    }
+
+    else if (RCREG == '3') {
+        _delay((unsigned long)((500)*(8000000/4000.0)));
+        printf("\r\rPresione el caracter a colocar en PORTB\r\r");
+        while (RCIF == 0);
+
+        PORTB = RCREG;
+    }
+
+    else {
+        (0);
+    }
     return;
 }
