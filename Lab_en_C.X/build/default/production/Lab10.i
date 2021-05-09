@@ -2834,7 +2834,7 @@ void display(void) {
     _delay((unsigned long)((100)*(8000000/4000.0)));
     printf("    (3) Cambiar PORTB \r");
 
-    while (PIR1bits.RCIF == 0);
+    while (RCIF == 0);
 
     if (RCREG == '1') {
         _delay((unsigned long)((500)*(8000000/4000.0)));

@@ -147,12 +147,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p i __delay ]
 "195 C:\Program Files\Microchip\xc8\v2.31\pic\include\c90\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-"1140 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
-[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
-"4175
+"4175 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4175: extern volatile __bit RCIF __attribute__((address(0x65)));
 [v _RCIF `Vb ~T0 @X0 0 e@101 ]
+"1140
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
+[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
 "18 Lab10.c
 [p x FOSC  =  INTRC_NOCLKOUT ]
 "19
@@ -586,11 +586,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Lab10.c: 141:     printf("    (3) Cambiar PORTB \r");
 [e ( _printf :s 4C ]
 "143
-[; ;Lab10.c: 143:     while (PIR1bits.RCIF == 0);
+[; ;Lab10.c: 143:     while (RCIF == 0);
 [e $U 149  ]
 [e :U 150 ]
 [e :U 149 ]
-[e $ == -> . . _PIR1bits 0 5 `i -> 0 `i 150  ]
+[e $ == -> _RCIF `i -> 0 `i 150  ]
 [e :U 151 ]
 "145
 [; ;Lab10.c: 145:     if (RCREG == '1') {
