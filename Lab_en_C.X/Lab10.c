@@ -5,7 +5,7 @@
 // 
 // Programa: Transmición y recepción por medio del módulo EUSART
 //           
-// Hardware: 2 servos en PORTC y 2 potenciometros en PORTA 
+// Hardware: Leds en PORTA y PORTB y display serial en TX y RX 
 //
 // Creado: 04 may, 2021
 // Ultima modificacion: 08 may, 2021
@@ -80,10 +80,10 @@ void main(void) {
 
 void setup(void) {
     //Configuracion de los puertos
-    ANSEL   = 0X00;       //Colocamos RA0 y RA1 como entradas analogicas
+    ANSEL   = 0X00;       //No hay entradas analogicas
     ANSELH  = 0X00;       
     
-    TRISA   = 0X00;       //Colocamos RA0 y RA1 como entradas y el resto del
+    TRISA   = 0X00;       //Porta y Portb como salidas
     TRISB   = 0X00;
 
     PORTA   = 0x00;
